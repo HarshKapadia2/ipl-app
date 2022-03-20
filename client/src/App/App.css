@@ -1,0 +1,40 @@
+@font-face {
+	font-family: "Optimal Extra Black";
+	src: url("./optimal-extra-black.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+main {
+	min-height: 90vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#full-logo {
+	width: 15vw;
+}
+
+h1 {
+	font-size: 80px;
+	margin: 0.5em 0.5em 1em 0.5em;
+	font-family: "Optimal Extra Black", "Montserrat", sans-serif;
+	text-align: center;
+}
+
+#cta {
+	background-color: #db5220;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	width: fit-content;
+	padding: 0.5em 1em;
+	font-size: 25px;
+}
+
+footer {
+	height: 10vh;
+}
