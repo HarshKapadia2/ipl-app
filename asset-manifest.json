@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ipl-app/static/css/main.1d6e7a00.css",
+    "main.js": "/ipl-app/static/js/main.7ad99417.js",
+    "static/media/bg.jpg": "/ipl-app/static/media/bg.16bf37b271096f138626.jpg",
+    "static/media/optimal-extra-black.woff2": "/ipl-app/static/media/optimal-extra-black.487767d06de66faedbc1.woff2",
+    "index.html": "/ipl-app/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.1d6e7a00.css",
+    "static/js/main.7ad99417.js"
+  ]
+}
