@@ -15,11 +15,12 @@ main {
 }
 
 #full-logo {
-	width: 15vw;
+	width: 12em;
 }
 
 h1 {
-	font-size: 80px;
+	font-size: 60px;
+	font-size: clamp(50px, 5vw, 80px);
 	margin: 0.5em 0.5em 1em 0.5em;
 	font-family: "Optimal Extra Black", "Montserrat", sans-serif;
 	text-align: center;
@@ -30,11 +31,32 @@ h1 {
 	color: white;
 	text-decoration: none;
 	border-radius: 5px;
-	width: fit-content;
 	padding: 0.5em 1em;
-	font-size: 25px;
+	font-size: 22px;
+	font-size: clamp(20px, 2vw, 25px);
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+}
+
+#cta img {
+	height: 1em;
+	margin-left: 0.3em;
+	animation: translateHorizontally 1.5s ease-in-out infinite;
+}
+
+@keyframes translateHorizontally {
+	0%,
+	100% {
+		transform: translateX(2px);
+	}
+	50% {
+		transform: translateX(10px);
+	}
 }
 
 footer {
 	height: 10vh;
+	display: flex;
+	align-items: center;
 }
