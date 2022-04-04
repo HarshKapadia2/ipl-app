@@ -1,0 +1,28 @@
+name: Deploy server
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - ".github/workflows/deploy-server.yaml"
+            - "server/datasets/**"
+            - "server/main.py"
+            - "server/mlr.py"
+            - "server/Procfile"
+            - "server/requirements.txt"
+    workflow_dispatch: # Allows manual execution of workflow
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Deploy server
+              uses: akhileshns/heroku-deploy@v3.12.12
+              with:
+                  heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                  heroku_app_name: "ipl-app-api"
+                  heroku_email: "harshgkapadia@gmail.com"
+                  appdir: "server"
