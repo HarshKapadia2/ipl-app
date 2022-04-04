@@ -10,6 +10,7 @@ on:
             - "server/mlr.py"
             - "server/Procfile"
             - "server/requirements.txt"
+            - "server/runtime.txt"
     workflow_dispatch: # Allows manual execution of workflow
 
 jobs:
