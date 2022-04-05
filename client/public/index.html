@@ -40,6 +40,18 @@
 		/>
 
 		<link
+			rel="preconnect"
+			href="https://ipl-app-api.herokuapp.com"
+			crossorigin
+		/>
+		<link rel="dns-prefetch" href="https://ipl-app-api.herokuapp.com" />
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				fetch("https://ipl-app-api.herokuapp.com/ping");
+			});
+		</script>
+
+		<link
 			rel="shortcut icon"
 			href="%PUBLIC_URL%/favicon.ico"
 			type="image/x-icon"

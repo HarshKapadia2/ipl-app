@@ -12,7 +12,8 @@ def homePage():
 @app.route("/predict", methods = ["POST", "OPTIONS"])
 def predictPrice():
 	if request.method == "OPTIONS": # For the CORS Preflight request
-		return corsPreflightResponse()
+		# return corsPreflightResponse("https://harshkapadia2.github.io", ["*"], ["POST"])
+		return corsPreflightResponse("*", ["*"], ["POST"])
 	elif request.method == "POST":
 		try:
 			data = request.json
@@ -45,12 +46,38 @@ def predictPrice():
 
 		return response, 200
 
-def corsPreflightResponse():
+@app.route("/ping", methods = ["GET", "OPTIONS"])
+def ping():
+	if request.method == "OPTIONS": # For the CORS Preflight request
+		# return corsPreflightResponse("https://harshkapadia2.github.io", ["*"], ["GET"])
+		return corsPreflightResponse("*", ["*"], ["GET"])
+	elif request.method == "GET":
+		response = make_response(jsonify({}))
+		# response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
+		response.headers.add("Access-Control-Allow-Origin", "*")
+
+		return response, 200
+
+def corsPreflightResponse(origin = "*", headers = ["*"], methods = ["*"]):
+	methodStr = ""
+	headerStr = ""
+
+	for mthd in methods:
+		if methodStr == "":
+			methodStr = mthd
+		else:
+			methodStr += ", " + mthd
+	
+	for hdr in headers:
+		if headerStr == "":
+			headerStr = hdr
+		else:
+			headerStr += ", " + hdr
+
 	response = make_response()
-	# response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
-	response.headers.add("Access-Control-Allow-Origin", "*")
-	response.headers.add('Access-Control-Allow-Headers', "*")
-	response.headers.add('Access-Control-Allow-Methods', "POST")
+	response.headers.add("Access-Control-Allow-Origin", origin)
+	response.headers.add('Access-Control-Allow-Headers', headerStr)
+	response.headers.add('Access-Control-Allow-Methods', methodStr)
 	return response
 
 if __name__ == "__main__":

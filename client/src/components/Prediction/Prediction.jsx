@@ -27,7 +27,7 @@ const Prediction = () => {
 	return (
 		<>
 			<main>
-				<h1>IPL Auction Price Prediction</h1>
+				<h1>Predict IPL Auction Price</h1>
 
 				<div className="form-div">
 					<div id="tabs">
