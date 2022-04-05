@@ -39,7 +39,7 @@ def predictPrice():
 		inputs = [raa, wins, efScore, salary]
 		predictedPrice = make_recommendation(inputs)
 
-		response = jsonify({"predictedPrice": predictedPrice})
+		response = make_response(jsonify({"predictedPrice": predictedPrice}))
 		# response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
 		response.headers.add("Access-Control-Allow-Origin", "*")
 
