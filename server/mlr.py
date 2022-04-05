@@ -4,12 +4,12 @@ from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
 
 def make_recommendation(searchTerms):
-	dataset = pd.read_csv("./datasets/data.csv")
+	dataset = pd.read_csv("datasets/data.csv")
 	X = dataset.iloc[:, :-1].values
 	y = dataset.iloc[:, -1].values
 
 	# Replace NaN values with mean of entire column
-	imputer = SimpleImputer(missing_values=np.nan, strategy="mean")
+	imputer = SimpleImputer(missing_values = np.nan, strategy = "mean")
 	imputer.fit(X[:, :])
 	X[:, :] = imputer.transform(X[:, :])
 
