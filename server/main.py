@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, make_response
 from flask import request
 import json
 from mlr import make_recommendation
@@ -54,4 +54,4 @@ def corsPreflightResponse():
 	return response
 
 if __name__ == "__main__":
-	app.run(debug = True)
+	app.run(debug = False)
