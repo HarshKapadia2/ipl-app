@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ipl-app/static/css/main.b12c4b5b.css",
-    "main.js": "/ipl-app/static/js/main.cacda4ac.js",
+    "main.js": "/ipl-app/static/js/main.0937caca.js",
     "static/media/bg.jpg": "/ipl-app/static/media/bg.16bf37b271096f138626.jpg",
     "static/media/optimal-extra-black.woff2": "/ipl-app/static/media/optimal-extra-black.487767d06de66faedbc1.woff2",
     "index.html": "/ipl-app/index.html",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.b12c4b5b.css",
-    "static/js/main.cacda4ac.js"
+    "static/js/main.0937caca.js"
   ]
 }
