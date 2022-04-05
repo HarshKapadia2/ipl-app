@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
 
 def make_recommendation(searchTerms):
-	dataset = pd.read_csv("datasets/data.csv")
+	dataset = pd.read_csv("./datasets/data.csv")
 	X = dataset.iloc[:, :-1].values
 	y = dataset.iloc[:, -1].values
 
