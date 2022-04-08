@@ -7,13 +7,13 @@ app = Flask(__name__)
 
 @app.route("/", methods = ["GET"])
 def homePage():
-	return render_template("index.html")
+	if request.method == "GET":
+		return render_template("index.html")
 
 @app.route("/predict", methods = ["POST", "OPTIONS"])
 def predictPrice():
 	if request.method == "OPTIONS": # For the CORS Preflight request
-		# return corsPreflightResponse("https://harshkapadia2.github.io", ["*"], ["POST"])
-		return corsPreflightResponse("*", ["*"], ["POST"])
+		return corsPreflightResponse()
 	elif request.method == "POST":
 		try:
 			data = request.json
@@ -22,7 +22,7 @@ def predictPrice():
 
 		raa = data["raa"]
 		wins = data["wins"]
-		efScore = data["ef-score"]
+		efScore = data["efScore"]
 		salary = data["salary"]
 
 		if not isinstance(raa, int) and not isinstance(raa, float):
@@ -37,48 +37,34 @@ def predictPrice():
 		if efScore < 0 or efScore > 1:
 			return jsonify({"errorMsg": "EF score should be between 0 and 1, both inclusive."}), 400
 
+		if salary < 0:
+			return jsonify({"errorMsg": "Salary should be non-negative."}), 400
+
 		inputs = [raa, wins, efScore, salary]
 		predictedPrice = make_recommendation(inputs)
 
 		response = make_response(jsonify({"predictedPrice": predictedPrice}))
-		# response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
-		response.headers.add("Access-Control-Allow-Origin", "*")
+		response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
 
 		return response, 200
 
 @app.route("/ping", methods = ["GET", "OPTIONS"])
 def ping():
 	if request.method == "OPTIONS": # For the CORS Preflight request
-		# return corsPreflightResponse("https://harshkapadia2.github.io", ["*"], ["GET"])
-		return corsPreflightResponse("*", ["*"], ["GET"])
+		return corsPreflightResponse()
 	elif request.method == "GET":
 		response = make_response(jsonify({}))
-		# response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
-		response.headers.add("Access-Control-Allow-Origin", "*")
+		response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
 
 		return response, 200
 
-def corsPreflightResponse(origin = "*", headers = ["*"], methods = ["*"]):
-	methodStr = ""
-	headerStr = ""
-
-	for mthd in methods:
-		if methodStr == "":
-			methodStr = mthd
-		else:
-			methodStr += ", " + mthd
-	
-	for hdr in headers:
-		if headerStr == "":
-			headerStr = hdr
-		else:
-			headerStr += ", " + hdr
-
+def corsPreflightResponse():
 	response = make_response()
-	response.headers.add("Access-Control-Allow-Origin", origin)
-	response.headers.add('Access-Control-Allow-Headers', headerStr)
-	response.headers.add('Access-Control-Allow-Methods', methodStr)
+	response.headers.add("Access-Control-Allow-Origin", "https://harshkapadia2.github.io")
+	response.headers.add("Access-Control-Allow-Headers", "*")
+	response.headers.add("Access-Control-Allow-Methods", "GET, POST")
+	response.headers.add("Access-Control-Max-Age", 3600)
 	return response
 
 if __name__ == "__main__":
-	app.run(debug = False)
+	app.run(debug = True) # CHANGE THIS TO FALSE
