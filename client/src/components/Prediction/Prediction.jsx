@@ -59,12 +59,15 @@ const Prediction = () => {
 		})
 			.then((res) => res.json())
 			.then((resData) => {
-				console.log("resData: ", resData);
-
 				if (resData.errorMsg !== undefined) setError(resData.errorMsg);
 				else {
+					const predictedPrice =
+						resData.predictedPrice >= 0
+							? resData.predictedPrice
+							: 0;
+
 					setIsButtonDisabled(false);
-					setPredictionValue(resData.predictedPrice);
+					setPredictionValue(predictedPrice);
 				}
 			})
 			.catch((err) => console.error(err));
