@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/ipl-app/static/css/main.b12c4b5b.css",
-    "main.js": "/ipl-app/static/js/main.0937caca.js",
-    "static/media/bg.jpg": "/ipl-app/static/media/bg.16bf37b271096f138626.jpg",
+    "main.css": "/ipl-app/static/css/main.9ef79b03.css",
+    "main.js": "/ipl-app/static/js/main.0306897b.js",
+    "static/media/bg.jpg": "/ipl-app/static/media/bg.bd70b2a5323449bd543b.jpg",
     "static/media/optimal-extra-black.woff2": "/ipl-app/static/media/optimal-extra-black.487767d06de66faedbc1.woff2",
     "index.html": "/ipl-app/index.html",
-    "static/media/arrow.svg": "/ipl-app/static/media/arrow.000b1c59fd9327dd0c4a71f4a03a4419.svg"
+    "static/media/arrow.svg": "/ipl-app/static/media/arrow.42d0dc34ed01f85959d62bcc1d4e5bbe.svg"
   },
   "entrypoints": [
-    "static/css/main.b12c4b5b.css",
-    "static/js/main.0937caca.js"
+    "static/css/main.9ef79b03.css",
+    "static/js/main.0306897b.js"
   ]
 }
