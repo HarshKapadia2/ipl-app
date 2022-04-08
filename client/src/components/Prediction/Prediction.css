@@ -1,7 +1,7 @@
 .form-div {
 	border: 3px solid #ef4123;
 	border-radius: 5px;
-	padding: 1em;
+	padding: 1.5em;
 }
 
 #tabs {
@@ -17,4 +17,23 @@
 
 .orange-bottom-border {
 	border-bottom: 3px solid #db5220;
+	border-radius: 5px;
+}
+
+#error {
+	width: 100%;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	border: 1px solid #db5220;
+	border-radius: 5px;
+	background-color: #db522055;
+}
+
+#prediction-value {
+	width: 100%;
+	margin-top: 1em;
+	padding: 0.5em;
+	border: 1px solid #76ff03;
+	border-radius: 5px;
+	background-color: #76ff0355;
 }

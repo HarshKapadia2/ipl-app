@@ -5,6 +5,7 @@ form {
 }
 
 label {
+	width: 100%;
 	margin-bottom: 1.5em;
 	display: flex;
 	align-items: center;
@@ -24,4 +25,8 @@ input[type="submit"] {
 	color: white;
 	border-radius: 5px;
 	padding: 0.5em 1em;
+}
+
+input[type="range"] {
+	padding: 0.5em 0;
 }

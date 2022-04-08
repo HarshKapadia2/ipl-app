@@ -4,6 +4,9 @@ import "./Prediction.css";
 
 const Prediction = () => {
 	const [playerType, setPlayerType] = useState("Batsman");
+	const [error, setError] = useState("");
+	const [predictionValue, setPredictionValue] = useState();
+	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 	const batsmanTab = useRef();
 	const bowlerTab = useRef();
 
@@ -24,10 +27,53 @@ const Prediction = () => {
 			setPlayerType("Bowler");
 	};
 
+	const handleFormData = (data) => {
+		setIsButtonDisabled(true);
+		setError("");
+		setPredictionValue();
+
+		if (
+			isNaN(data.raa) ||
+			isNaN(data.wins) ||
+			isNaN(data.efScore) ||
+			isNaN(data.salary)
+		) {
+			setError("All inputs should be numeric.");
+			return;
+		} else if (data.efScore < 0 || data.efScore > 1) {
+			setError("Confidence in a player can only range from 0 to 100%.");
+			return;
+		} else if (data.salary < 0) {
+			setError("A player's salary has to be non-negative.");
+			return;
+		}
+
+		fetch("https://ipl-app-api.herokuapp.com/predict", {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/json"
+			},
+			body: JSON.stringify(data)
+		})
+			.then((res) => res.json())
+			.then((resData) => {
+				console.log("resData: ", resData);
+
+				if (resData.errorMsg !== undefined) setError(resData.errorMsg);
+				else {
+					setIsButtonDisabled(false);
+					setPredictionValue(resData.predictedPrice);
+				}
+			})
+			.catch((err) => console.error(err));
+	};
+
 	return (
 		<>
 			<main>
-				<h1>Predict IPL Auction Price</h1>
+				<h1>Predict IPL Player's Auction Price</h1>
 
 				<div className="form-div">
 					<div id="tabs">
@@ -47,10 +93,26 @@ const Prediction = () => {
 						</div>
 					</div>
 
+					{error !== "" && <div id="error">Error: {error}</div>}
+
 					{playerType === "Batsman" ? (
-						<Form type="Batsman" />
+						<Form
+							type="Batsman"
+							sendData={handleFormData}
+							isButtonDisabled={isButtonDisabled}
+						/>
 					) : (
-						<Form type="Bowler" />
+						<Form
+							type="Bowler"
+							sendData={handleFormData}
+							isButtonDisabled={isButtonDisabled}
+						/>
+					)}
+
+					{predictionValue && (
+						<div id="prediction-value">
+							Predicted Salary: ${parseInt(predictionValue)}
+						</div>
 					)}
 				</div>
 			</main>
