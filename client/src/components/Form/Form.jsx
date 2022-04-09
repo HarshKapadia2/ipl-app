@@ -42,8 +42,10 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 					onChange={(event) => {
 						setWins(parseFloat(event.target.value));
 					}}
+					min={-1}
+					max={1}
 					step={0.001}
-					title="Non-negative numbers are allowed."
+					title="Numbers between -1 and 1 (both inclusive) are allowed."
 					required
 				/>
 			</label>
@@ -57,8 +59,8 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 					type="range"
 					name="ef-score"
 					id="ef-score"
-					min="0"
-					max="1"
+					min={0}
+					max={1}
 					step={0.001}
 					value={efScore}
 					onChange={(event) => {
