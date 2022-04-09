@@ -63,8 +63,8 @@ const Prediction = () => {
 				else {
 					const predictedPrice =
 						resData.predictedPrice >= 0
-							? resData.predictedPrice
-							: 0;
+							? parseInt(resData.predictedPrice)
+							: parseInt(-1 * resData.predictedPrice);
 
 					setIsButtonDisabled(false);
 					setPredictionValue(predictedPrice);
@@ -112,9 +112,9 @@ const Prediction = () => {
 						/>
 					)}
 
-					{predictionValue && (
+					{predictionValue !== undefined && (
 						<div id="prediction-value">
-							Predicted Salary: ${parseInt(predictionValue)}
+							Predicted Salary: ${predictionValue}
 						</div>
 					)}
 				</div>
