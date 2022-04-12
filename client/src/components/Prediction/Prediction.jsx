@@ -10,15 +10,15 @@ const Prediction = () => {
 	const batsmanTab = useRef();
 	const bowlerTab = useRef();
 
-	useEffect(() => {
-		if (playerType === "Batsman") {
-			batsmanTab.current.className += " orange-bottom-border";
-			bowlerTab.current.className = "single-tab";
-		} else {
-			bowlerTab.current.className += " orange-bottom-border";
-			batsmanTab.current.className = "single-tab";
-		}
-	}, [playerType]);
+	// useEffect(() => {
+	// 	if (playerType === "Batsman") {
+	// 		batsmanTab.current.className += " orange-bottom-border";
+	// 		bowlerTab.current.className = "single-tab";
+	// 	} else {
+	// 		bowlerTab.current.className += " orange-bottom-border";
+	// 		batsmanTab.current.className = "single-tab";
+	// 	}
+	// }, [playerType]);
 
 	const choosePlayerType = (chosenPlayerType) => {
 		if (chosenPlayerType === "Batsman" && playerType !== "Batsman")
@@ -79,7 +79,7 @@ const Prediction = () => {
 				<h1>Predict IPL Player's Auction Price</h1>
 
 				<div className="form-div">
-					<div id="tabs">
+					{/* <div id="tabs">
 						<div
 							className="single-tab"
 							ref={batsmanTab}
@@ -94,7 +94,7 @@ const Prediction = () => {
 						>
 							Bowler
 						</div>
-					</div>
+					</div> */}
 
 					{error !== "" && <div id="error">Error: {error}</div>}
 

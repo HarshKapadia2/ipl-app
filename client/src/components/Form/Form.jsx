@@ -16,7 +16,8 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 		<form onSubmit={(event) => handleSubmit(event)}>
 			<label htmlFor="raa">
 				<span>
-					RAA of {type}&nbsp;<sup>*</sup>
+					RAA of player&nbsp;<sup>*</sup>
+					{/* RAA of {type}&nbsp;<sup>*</sup> */}
 				</span>
 				<input
 					type="number"
@@ -52,8 +53,7 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 
 			<label htmlFor="ef-score">
 				<span>
-					Confidence in Player: <sup>*</sup>{" "}
-					{Math.round(efScore * 100)}%
+					EFscore: <sup>*</sup> {Math.round(efScore * 100)}%
 				</span>
 				<input
 					type="range"
