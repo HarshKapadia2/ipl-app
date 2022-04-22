@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template, make_response
 from flask import request
 import json
-from mlr import make_recommendation
+from predict import make_recommendation
 
 app = Flask(__name__)
 
