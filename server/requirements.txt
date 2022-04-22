@@ -120,7 +120,7 @@ Pygments==2.9.0
 PyJWT==2.3.0
 pynndescent==0.5.6
 pyparsing==2.4.7
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 pyquery==1.4.3
 pyrsistent==0.18.0
 python-dateutil==2.8.2
