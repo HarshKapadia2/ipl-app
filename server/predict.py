@@ -4,8 +4,6 @@ from sklearn.impute import SimpleImputer
 from xgboost import XGBRegressor
 
 def make_recommendation(searchTerms):
-	print(searchTerms)
-
 	dataset = pd.read_csv("./datasets/data.csv")
 	X = dataset.iloc[:, :-1].values
 	y = dataset.iloc[:, -1].values
@@ -17,6 +15,6 @@ def make_recommendation(searchTerms):
 
 	# Apply model to make predictions
 	xgb_model = XGBRegressor().fit(X, y)
-	prediction = xgb_model.predict(searchTerms)
+	prediction = xgb_model.predict([searchTerms])
 
-	return prediction[0]
+	return float(prediction[0])
