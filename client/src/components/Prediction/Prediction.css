@@ -4,22 +4,6 @@
 	padding: 1.5em;
 }
 
-#tabs {
-	display: flex;
-	margin-bottom: 1em;
-}
-
-.single-tab {
-	padding: 0 0.25em 0.5em 0.25em;
-	margin-right: 1em;
-	cursor: pointer;
-}
-
-.orange-bottom-border {
-	border-bottom: 3px solid #db5220;
-	border-radius: 5px;
-}
-
 #error {
 	width: 100%;
 	margin-bottom: 1em;

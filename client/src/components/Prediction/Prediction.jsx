@@ -1,37 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Form from "../Form/Form";
 import "./Prediction.css";
 
 const Prediction = () => {
-	const [playerType, setPlayerType] = useState("Batsman");
 	const [error, setError] = useState("");
 	const [predictionValue, setPredictionValue] = useState();
 	const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-	const batsmanTab = useRef();
-	const bowlerTab = useRef();
-
-	// useEffect(() => {
-	// 	if (playerType === "Batsman") {
-	// 		batsmanTab.current.className += " orange-bottom-border";
-	// 		bowlerTab.current.className = "single-tab";
-	// 	} else {
-	// 		bowlerTab.current.className += " orange-bottom-border";
-	// 		batsmanTab.current.className = "single-tab";
-	// 	}
-	// }, [playerType]);
-
-	const choosePlayerType = (chosenPlayerType) => {
-		if (chosenPlayerType === "Batsman" && playerType !== "Batsman")
-			setPlayerType("Batsman");
-		else if (chosenPlayerType === "Bowler" && playerType !== "Bowler")
-			setPlayerType("Bowler");
-	};
 
 	const handleFormData = (data) => {
-		setIsButtonDisabled(true);
-		setError("");
-		setPredictionValue();
-
 		if (
 			isNaN(data.raa) ||
 			isNaN(data.wins) ||
@@ -47,6 +23,9 @@ const Prediction = () => {
 			setError("A player's salary has to be non-negative.");
 			return;
 		}
+
+		setPredictionValue();
+		setIsButtonDisabled(true);
 
 		fetch("https://ipl-app-api.herokuapp.com/predict", {
 			method: "POST",
@@ -79,38 +58,12 @@ const Prediction = () => {
 				<h1>Predict IPL Player's Auction Price</h1>
 
 				<div className="form-div">
-					{/* <div id="tabs">
-						<div
-							className="single-tab"
-							ref={batsmanTab}
-							onClick={() => choosePlayerType("Batsman")}
-						>
-							Batsman
-						</div>
-						<div
-							className="single-tab"
-							ref={bowlerTab}
-							onClick={() => choosePlayerType("Bowler")}
-						>
-							Bowler
-						</div>
-					</div> */}
-
 					{error !== "" && <div id="error">Error: {error}</div>}
 
-					{playerType === "Batsman" ? (
-						<Form
-							type="Batsman"
-							sendData={handleFormData}
-							isButtonDisabled={isButtonDisabled}
-						/>
-					) : (
-						<Form
-							type="Bowler"
-							sendData={handleFormData}
-							isButtonDisabled={isButtonDisabled}
-						/>
-					)}
+					<Form
+						sendData={handleFormData}
+						isButtonDisabled={isButtonDisabled}
+					/>
 
 					{predictionValue !== undefined && (
 						<div id="prediction-value">

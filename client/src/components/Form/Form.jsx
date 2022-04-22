@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Form.css";
 
-const Form = ({ type, sendData, isButtonDisabled }) => {
+const Form = ({ sendData, isButtonDisabled }) => {
 	const [raa, setRaa] = useState(0);
 	const [wins, setWins] = useState(0);
 	const [efScore, setEfScore] = useState(0);
@@ -16,8 +16,7 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 		<form onSubmit={(event) => handleSubmit(event)}>
 			<label htmlFor="raa">
 				<span>
-					RAA of player&nbsp;<sup>*</sup>
-					{/* RAA of {type}&nbsp;<sup>*</sup> */}
+					RAA&nbsp;<sup>*</sup>
 				</span>
 				<input
 					type="number"
@@ -53,7 +52,7 @@ const Form = ({ type, sendData, isButtonDisabled }) => {
 
 			<label htmlFor="ef-score">
 				<span>
-					EFscore: <sup>*</sup> {Math.round(efScore * 100)}%
+					EF Score: <sup>*</sup> {Math.round(efScore * 100)}%
 				</span>
 				<input
 					type="range"
