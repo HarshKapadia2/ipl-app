@@ -112,7 +112,7 @@ preshed==3.0.6
 prometheus-client==0.11.0
 prometheus-flask-exporter==0.20.1
 prompt-toolkit==3.0.19
-protobuf==3.20.0
+protobuf==3.20.2
 pycodestyle==2.7.0
 pycparser==2.20
 pydantic==1.8.2
