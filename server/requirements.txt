@@ -105,7 +105,7 @@ pathy==0.6.1
 patsy==0.5.2
 phik==0.12.2
 pickleshare==0.7.5
-Pillow==8.3.1
+Pillow==9.3.0
 platformdirs==2.4.0
 plotly==5.7.0
 preshed==3.0.6
