@@ -174,7 +174,7 @@ wasabi==0.9.1
 wcwidth==0.2.5
 webencodings==0.5.1
 websocket-client==1.1.0
-Werkzeug==2.0.2
+Werkzeug==2.2.3
 widgetsnbextension==3.6.0
 xgboost==1.5.2
 XlsxWriter==3.0.2
